@@ -15,4 +15,9 @@ public class ActionTest {
     public void testAssert() {
         assertTrue(true, "Junit KO");
     }
+
+    @Test
+    public void testKo() {
+        assertTrue(false, "test KO");
+    }
 }
