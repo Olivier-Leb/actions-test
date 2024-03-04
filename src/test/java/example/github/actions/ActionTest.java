@@ -22,7 +22,7 @@ public class ActionTest {
 
     @Test
     public void testSelenium() {
-        System.setProperty("webdriver.gecko.driver", "/snap/bin/geckodriver");
+        //System.setProperty("webdriver.gecko.driver", "/snap/bin/geckodriver");
 
         FirefoxDriverService service = new GeckoDriverService.Builder()
                 .build();
