@@ -1,6 +1,10 @@
 package example.github.actions;
 
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriverService;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.GeckoDriverService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +21,17 @@ public class ActionTest {
     }
 
     @Test
-    public void testKo() {
-        assertTrue(false, "test KO");
+    public void testSelenium() {
+        System.setProperty("webdriver.gecko.driver", "/snap/bin/geckodriver");
+
+        FirefoxDriverService service = new GeckoDriverService.Builder()
+                .build();
+
+        FirefoxOptions opts = new FirefoxOptions();
+        opts.addArguments("--headless");
+
+        FirefoxDriver driver = new FirefoxDriver(service, opts);
+
+        driver.get("https://www.google.com/");
     }
 }
