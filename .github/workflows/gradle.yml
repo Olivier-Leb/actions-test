@@ -30,6 +30,12 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build
 
+    - name: Test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: reports
+        path: build/reports/tests/test/
+
   dependency-submission:
 
     runs-on: ubuntu-latest
