@@ -1,5 +1,6 @@
 package example.github.actions;
 
+import example.github.actions.utils.PropertyLoader;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxDriverService;
@@ -16,6 +17,20 @@ public class ActionTest {
     }
 
     @Test
+    public void testProperties() {
+        assertEquals(
+                "firefox",
+                PropertyLoader.getConfigValue("driver.default"),
+                "Wrong value for property 'driver.default'"
+        );
+        assertEquals(
+                "https://www.google.com",
+                PropertyLoader.getConfigValue("url.base"),
+                "Wrong value for property 'url.base'"
+        );
+    }
+
+    @Test
     public void testSelenium() {
         //System.setProperty("webdriver.gecko.driver", "/snap/bin/geckodriver");
 
@@ -27,6 +42,6 @@ public class ActionTest {
 
         FirefoxDriver driver = new FirefoxDriver(service, opts);
 
-        driver.get("https://www.google.com/");
+        driver.get("https://www.google.com");
     }
 }

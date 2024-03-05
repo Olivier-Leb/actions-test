@@ -1,0 +1,6 @@
+driver.default = CI_DRIVER_DEFAULT
+driver.headless = true
+driver.chrome =
+driver.firefox =
+
+url.base = CI_URL_BASE
