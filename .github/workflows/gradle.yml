@@ -26,6 +26,7 @@ jobs:
       run: |
         echo "repository variable 'REPOSITORY_VAR' : $REPOSITORY_VAR"
         echo "repository variable 'DRIVER_DEFAULT' : $DRIVER_DEFAULT"
+        echo "repository variable 'vars.DRIVER_DEFAULT' : ${{ vars.DRIVER_DEFAULT }}"
       env:
         REPOSITORY_VAR: ${{ vars.DRIVER_DEFAULT }}
         DRIVER_DEFAULT: ${{ vars.DRIVER_DEFAULT }}
