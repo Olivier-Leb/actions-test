@@ -31,8 +31,10 @@ public class ActionTest {
     }
 
     @Test
-    public void testSelenium() {
-        //System.setProperty("webdriver.gecko.driver", "/snap/bin/geckodriver");
+    public void testFirefoxSelenium() {
+        if (!PropertyLoader.getConfigValue("driver.firefox").isEmpty()) {
+            System.setProperty("webdriver.gecko.driver", PropertyLoader.getConfigValue("driver.firefox"));
+        }
 
         FirefoxDriverService service = new GeckoDriverService.Builder()
                 .build();
@@ -42,6 +44,12 @@ public class ActionTest {
 
         FirefoxDriver driver = new FirefoxDriver(service, opts);
 
-        driver.get("https://www.google.com");
+        driver.get(PropertyLoader.getConfigValue("url.base"));
+
+        assertEquals(
+                PropertyLoader.getConfigValue("url.base") + "/",
+                driver.getCurrentUrl(),
+                "Wrong page opened"
+        );
     }
 }
