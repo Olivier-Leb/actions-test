@@ -4,4 +4,5 @@ driver.chrome =
 driver.firefox =
 
 url.base = CI_URL_BASE
-secret = CI_SECRET
+secret1 = CI_SECRET1
+secret2 = CI_SECRET2

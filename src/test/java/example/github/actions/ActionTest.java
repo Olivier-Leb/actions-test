@@ -55,7 +55,10 @@ public class ActionTest {
 
     @Test
     public void testSecret() {
-        assertFalse(PropertyLoader.getConfigValue("secret").isEmpty(), "Empty secret");
-        assertEquals(PropertyLoader.getConfigValue("secret"), "12345", "Wrong secret");
+        assertFalse(PropertyLoader.getConfigValue("secret1").isEmpty(), "Empty secret");
+        assertEquals(PropertyLoader.getConfigValue("secret1"), "12345", "Wrong secret");
+
+        assertFalse(PropertyLoader.getConfigValue("secret2").isEmpty(), "Empty secret");
+        assertEquals(PropertyLoader.getConfigValue("secret2"), "$eCr3T.poW4fv$ed@n6", "Wrong secret");
     }
 }
