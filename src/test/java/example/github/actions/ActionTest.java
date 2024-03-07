@@ -52,4 +52,10 @@ public class ActionTest {
                 "Wrong page opened"
         );
     }
+
+    @Test
+    public void testSecret() {
+        assertFalse(PropertyLoader.getConfigValue("secret").isEmpty(), "Empty secret");
+        assertEquals(PropertyLoader.getConfigValue("secret"), "12345", "Wrong secret");
+    }
 }
