@@ -14,6 +14,9 @@ jobs:
     permissions:
       contents: read
 
+    env:
+      ENV_SECRET1: ${{ secrets.SECRET }}
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -32,8 +35,6 @@ jobs:
         DRIVER_DEFAULT: ${{ vars.DRIVER_DEFAULT }}
 
     - name: Test config.properties & repository variables
-      env:
-        ENV_SECRET1: ${{ secrets.SECRET }}
       run: |
         mv src/main/resources/config.properties.sample src/main/resources/config.properties
         sed -i "s/CI_DRIVER_DEFAULT/${{ vars.DRIVER_DEFAULT }}/g" src/main/resources/config.properties
