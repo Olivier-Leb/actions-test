@@ -40,7 +40,8 @@ jobs:
         ESCAPED_URL=$(printf '%s\n' "${{ vars.URL_BASE }}" | sed -e 's/[\/&]/\\&/g')
         sed -i "s/CI_URL_BASE/$ESCAPED_URL/g" src/main/resources/config.properties
         sed -i "s/CI_SECRET1/${{ secrets.SECRET }}/g" src/main/resources/config.properties
-        sed -i "s/CI_SECRET2/${{ secrets.SECRET2 }}/g" src/main/resources/config.properties
+        ESCAPED_SECRET2=$(printf '%s\n' "${{ secrets.SECRET2 }}" | sed -e 's/[\/&]/\\&/g')
+        sed -i "s/CI_SECRET2/$ESCAPED_SECRET2/g" src/main/resources/config.properties
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
