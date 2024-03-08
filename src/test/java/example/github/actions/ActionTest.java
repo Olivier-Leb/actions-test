@@ -55,19 +55,19 @@ public class ActionTest {
 
     @Test
     public void testSecret() {
-        assertFalse(PropertyLoader.getConfigValue("secret1").isEmpty(), "Empty secret");
-        assertEquals(PropertyLoader.getConfigValue("secret1"), "12345", "Wrong secret");
+        assertFalse(PropertyLoader.getConfigValue("secret.1").isEmpty(), "Empty secret");
+        assertEquals(PropertyLoader.getConfigValue("secret.1"), "12345", "Wrong secret");
 
-        assertFalse(PropertyLoader.getConfigValue("secret2").isEmpty(), "Empty secret");
-        assertEquals(PropertyLoader.getConfigValue("secret2"), "$eCr3T.poW4fv$ed@n6", "Wrong secret");
+        assertFalse(PropertyLoader.getConfigValue("secret.2").isEmpty(), "Empty secret");
+        assertEquals(PropertyLoader.getConfigValue("secret.2"), "$eCr3T.poW4fv$ed@n6", "Wrong secret");
     }
 
     @Test
     public void testEnvVariable() {
-        assertFalse(System.getenv("ENV_SECRET1").isEmpty(), "Empty secret");
-        assertEquals(System.getenv("ENV_SECRET1"), "12345", "Wrong secret");
+        assertNotNull(System.getenv("ENV_SECRET_1"), "Empty secret");
+        assertEquals(System.getenv("ENV_SECRET_1"), "12345", "Wrong secret");
 
-        assertFalse(System.getenv("ENV_SECRET2").isEmpty(), "Empty secret");
-        assertEquals(System.getenv("ENV_SECRET2"), "$eCr3T.poW4fv$ed@n6", "Wrong secret");
+        assertNotNull(System.getenv("ENV_SECRET_2"), "Empty secret");
+        assertEquals(System.getenv("ENV_SECRET_2"), "$eCr3T.poW4fv$ed@n6", "Wrong secret");
     }
 }
