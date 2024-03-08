@@ -34,18 +34,17 @@ jobs:
         REPOSITORY_VAR: ${{ vars.DRIVER_DEFAULT }}
         DRIVER_DEFAULT: ${{ vars.DRIVER_DEFAULT }}
 
-    - name: Test config.properties & repository variables
+    - name: Test config.properties
       run: |
         mv src/main/resources/config.properties.sample src/main/resources/config.properties
-      env:
-        ENV_DRIVER_DEFAULT: ${{ vars.DRIVER_DEFAULT }}
-        ENV_URL_BASE: ${{ vars.URL_BASE }}
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
     - name: Build with Gradle & repository variables
       env:
+        ENV_DRIVER_DEFAULT: ${{ vars.DRIVER_DEFAULT }}
+        ENV_URL_BASE: ${{ vars.URL_BASE }}
         ENV_SECRET_2: ${{ secrets.SECRET2 }}
       run: ./gradlew build
 
